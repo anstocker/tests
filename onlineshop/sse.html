@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<body>	
+		<div id="ausgabe"></div>
+		<script>
+			if(typeof (EventSource) !== "undefined")
+			{
+				var eventSource = new EventSource("http://localhost/onlineshop/SseServlet");
+				eventSource.onmessage = function(event)
+				{
+					document.getElementById("ausgabe").innerHTML = event.data;
+				};
+			}
+			else
+			{
+				document.getElementById("ausgabe").innerHTML = "Kein SSE moeglich!";
+			}
+		</script>
+	</body>
+</html>
